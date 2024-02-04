@@ -77,7 +77,7 @@ pipeline{
          when { expression {  params.action == 'create' } }
             steps{
                script{
-                 sh 'curl -u admin:${ARTIFACTORY_ACCESS_TOKEN} -T target/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar "http://3.109.184.11:8082/artifactory/example-repo-local/"'
+                 sh 'curl -v --user admin:$pass -X PUT "http://3.109.184.11:8082/artifactory/example-repo-local/kubernetes-configmap-reload-0.0.1-SNAPSHOT.jar"'
                }
             }
         }
